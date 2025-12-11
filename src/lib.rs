@@ -5,7 +5,7 @@ use spin_sdk::http_component;
 #[http_component]
 fn handle_component_metrics_example(_req: Request) -> anyhow::Result<impl IntoResponse> {
     fibonacci_recursive(43);
-    allocate_memory(10);
+    allocate_memory(50);
     Ok(Response::builder()
         .status(200)
         .header("content-type", "text/plain")
@@ -13,7 +13,7 @@ fn handle_component_metrics_example(_req: Request) -> anyhow::Result<impl IntoRe
         .build())
 }
 
-// Generates CPU usage
+/// Generates CPU usage
 fn fibonacci_recursive(n: u32) -> u64 {
     match n {
         0 => 0,
@@ -22,8 +22,8 @@ fn fibonacci_recursive(n: u32) -> u64 {
     }
 }
 
+/// Allocate {mb} Megabytes of memory
 fn allocate_memory(mb: usize) {
-    // Allocate memory ({mb} * 1024 * 1024 bytes)
     let mut buffer: Vec<u8> = vec![0; mb * 1024 * 1024];
 
     for (i, byte) in buffer.iter_mut().enumerate() {

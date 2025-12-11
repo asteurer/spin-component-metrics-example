@@ -15,5 +15,3 @@ spin build && spin up
 # In a different terminal...
 curl localhost:3000
 ```
-
-After the application has been invoked, stop the running application with `CTRL + C`. Spin will then print the CPU and memory that the Spin application used.
