@@ -29,4 +29,7 @@ fn allocate_memory(mb: usize) {
     for (i, byte) in buffer.iter_mut().enumerate() {
         *byte = (i % 256) as u8;
     }
+
+    // Prevent the compiler from optimizing away the buffer allocations.
+    std::hint::black_box(buffer);
 }
